@@ -29,6 +29,29 @@ export default function Header() {
         if (res.ok) {
           const data = await res.json();
           setSettings(data);
+
+          // Update page title dynamically in browser DOM
+          if (data.brandName) {
+            document.title = `${data.brandName} | Luxury Ethnic Wear & Designer Outfits`;
+          }
+
+          // Update favicon links dynamically in browser DOM
+          const logo = data.logoUrl || "/favicon.ico";
+          let link = document.querySelector("link[rel~='icon']");
+          if (!link) {
+            link = document.createElement("link");
+            link.rel = "icon";
+            document.getElementsByTagName("head")[0].appendChild(link);
+          }
+          link.href = logo;
+
+          let appleLink = document.querySelector("link[rel='apple-touch-icon']");
+          if (!appleLink) {
+            appleLink = document.createElement("link");
+            appleLink.rel = "apple-touch-icon";
+            document.getElementsByTagName("head")[0].appendChild(appleLink);
+          }
+          appleLink.href = logo;
         }
       } catch (e) {
         console.error("Header settings failed to load", e);
