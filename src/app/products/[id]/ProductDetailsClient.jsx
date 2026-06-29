@@ -22,6 +22,7 @@ export default function ProductDetailsClient({ product, settings }) {
   const [reviewComment, setReviewComment] = useState("");
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [shareModalOpen, setShareModalOpen] = useState(false);
 
   const fetchReviews = async () => {
     try {
