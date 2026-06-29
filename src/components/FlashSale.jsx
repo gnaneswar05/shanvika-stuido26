@@ -12,6 +12,22 @@ export default function FlashSale({ endDate }) {
     seconds: 0,
     isExpired: false,
   });
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await fetch("/api/settings", { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          setSettings(data);
+        }
+      } catch (e) {
+        console.error("Flash sale settings failed to load", e);
+      }
+    };
+    fetchSettings();
+  }, []);
 
   useEffect(() => {
     // If no end date is supplied, default to a rolling 48-hour marketing countdown
@@ -66,10 +82,10 @@ export default function FlashSale({ endDate }) {
             </span>
           </div>
           <h2 className="font-serif text-2xl sm:text-3.5xl text-white tracking-wide mb-3">
-            Seasonal Splendor Flash Sale
+            {settings?.flashSaleTitle || "Seasonal Splendor Flash Sale"}
           </h2>
           <p className="text-xs text-neutral-400 max-w-md font-light leading-relaxed">
-            Acquire handcrafted royal sarees and exquisite embroidered outfits at celebratory privilege pricing. Ends soon.
+            {settings?.flashSaleSubtitle || "Acquire handcrafted royal sarees and exquisite embroidered outfits at celebratory privilege pricing. Ends soon."}
           </p>
         </div>
 

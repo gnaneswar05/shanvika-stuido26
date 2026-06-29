@@ -22,6 +22,8 @@ export async function GET() {
         logoUrl: "/logo.jpg",
         slogan: "Confidence in Every Outfit",
         brandName: "Shanvika Studio",
+        flashSaleTitle: "Seasonal Splendor Flash Sale",
+        flashSaleSubtitle: "Acquire handcrafted royal sarees and exquisite embroidered outfits at celebratory privilege pricing. Ends soon.",
       });
     }
     
@@ -58,6 +60,8 @@ export async function PUT(req) {
     if (data.logoUrl !== undefined) settings.logoUrl = data.logoUrl.trim();
     if (data.slogan !== undefined) settings.slogan = data.slogan.trim();
     if (data.brandName !== undefined) settings.brandName = data.brandName.trim();
+    if (data.flashSaleTitle !== undefined) settings.flashSaleTitle = data.flashSaleTitle.trim();
+    if (data.flashSaleSubtitle !== undefined) settings.flashSaleSubtitle = data.flashSaleSubtitle.trim();
 
     await settings.save();
     return NextResponse.json(settings);

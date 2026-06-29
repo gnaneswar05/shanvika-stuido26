@@ -34,6 +34,14 @@ const SettingSchema = new mongoose.Schema(
       type: String,
       default: "Shanvika Studio",
     },
+    flashSaleTitle: {
+      type: String,
+      default: "Seasonal Splendor Flash Sale",
+    },
+    flashSaleSubtitle: {
+      type: String,
+      default: "Acquire handcrafted royal sarees and exquisite embroidered outfits at celebratory privilege pricing. Ends soon.",
+    },
   },
   { timestamps: true }
 );

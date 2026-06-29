@@ -70,6 +70,8 @@ export default function AdminDashboard() {
   const [setLogoUrl, setSetLogoUrl] = useState("");
   const [setSlogan, setSetSlogan] = useState("");
   const [setBrandName, setSetBrandName] = useState("");
+  const [setFlashSaleTitle, setSetFlashSaleTitle] = useState("");
+  const [setFlashSaleSubtitle, setSetFlashSaleSubtitle] = useState("");
   
   // 4. Admin Manual Review Form
   const [newReviewProduct, setNewReviewProduct] = useState("");
@@ -137,6 +139,8 @@ export default function AdminDashboard() {
         setSetLogoUrl(settingsData.logoUrl || "");
         setSetSlogan(settingsData.slogan || "");
         setSetBrandName(settingsData.brandName || "Shanvika Studio");
+        setSetFlashSaleTitle(settingsData.flashSaleTitle || "Seasonal Splendor Flash Sale");
+        setSetFlashSaleSubtitle(settingsData.flashSaleSubtitle || "Acquire handcrafted royal sarees and exquisite embroidered outfits at celebratory privilege pricing. Ends soon.");
       }
     } catch (e) {
       console.error("Error loading dashboard data", e);
@@ -438,6 +442,8 @@ export default function AdminDashboard() {
           logoUrl: setLogoUrl,
           slogan: setSlogan,
           brandName: setBrandName,
+          flashSaleTitle: setFlashSaleTitle,
+          flashSaleSubtitle: setFlashSaleSubtitle,
         }),
       });
 
@@ -1388,6 +1394,32 @@ export default function AdminDashboard() {
                           onChange={(e) => setSetSlogan(e.target.value)}
                           className="w-full bg-black border border-neutral-800 text-xs rounded px-3 py-3 text-white"
                           placeholder="e.g. Confidence in Every Outfit"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Flash Sale Banner Configuration */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 border-b border-neutral-900 pb-5 mb-2">
+                      <div>
+                        <label className="block text-[10px] uppercase text-neutral-400 font-semibold mb-1">Flash Sale Header Title</label>
+                        <input
+                          type="text"
+                          required
+                          value={setFlashSaleTitle}
+                          onChange={(e) => setSetFlashSaleTitle(e.target.value)}
+                          className="w-full bg-black border border-neutral-800 text-xs rounded px-3 py-3 text-white"
+                          placeholder="e.g. Seasonal Splendor Flash Sale"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] uppercase text-neutral-400 font-semibold mb-1">Flash Sale Banner Subtitle / Description</label>
+                        <input
+                          type="text"
+                          required
+                          value={setFlashSaleSubtitle}
+                          onChange={(e) => setSetFlashSaleSubtitle(e.target.value)}
+                          className="w-full bg-black border border-neutral-800 text-xs rounded px-3 py-3 text-white"
+                          placeholder="e.g. Acquire handcrafted royal outfits at privilege pricing..."
                         />
                       </div>
                     </div>
